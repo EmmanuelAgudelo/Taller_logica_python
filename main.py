@@ -1,4 +1,5 @@
 import os
+import time 
 
 # ------------- SOLICITAR VARIABLES -------------
 def getA():
@@ -22,63 +23,86 @@ def getB():
 
 def compuerta_AND(A,B):
     result = (A & B)
-    print("Resultado de la Compuerta AND para A y B es: ",result)
+    print("\nResultado de la Compuerta AND para A y B es: ",result,'\n')
+    print('--------------------------------------------------------------')
 
 def compuerta_OR(A, B):
     result = (A | B)
-    print("Resultado de la Compuerta OR para A y B es: ",result)
+    print("\nResultado de la Compuerta OR para A y B es: ",result,'\n')
+    print('--------------------------------------------------------------')
 
 def compuerta_XOR(A, B):
     result = (A ^ B)
-    print("Resultado de la Compuerta XOR para A y B es: ",result)
+    print("\nResultado de la Compuerta XOR para A y B es: ",result,'\n')
+    print('--------------------------------------------------------------')
 
 def compuerta_NOT(A):
     result = 1 if A == 0 else 0
-    print("Resultado de la Compuerta NOT para A es: ", result)
+    print("\nResultado de la Compuerta NOT para A es: ",result,'\n')
+    print('--------------------------------------------------------------')
 
 
 def compuerta_NOR(A, B):
     result = 1 if not (A | B) else 0
-    print("Resultado de la Compuerta NOR para A y B es: ", result)
+    print("\nResultado de la Compuerta NOR para A y B es: ",result,'\n')
+    print('--------------------------------------------------------------')
 
 def compuerta_XNOR(A, B):
     result = 1 if A == B else 0
-    print("Resultado de la Compuerta XNOR para A y B es: ", result)
+    print("\nResultado de la Compuerta XNOR para A y B es: ",result,'\n')
+    print('--------------------------------------------------------------')
 
 def compuerta_NAND(A,B):
     result = not(A & B)
-    print("Resultado de la Compuerta NAND para A y B es: ",result)
+    print("\nResultado de la Compuerta NAND para A y B es: ",result,'\n')
+    print('--------------------------------------------------------------')
 
 def compuerta_IF(A):
-    print("Resultado de la Compuerta IF para A es: ",A)
+    print("\nResultado de la Compuerta IF para A es: ",A,'\n')
+    print('--------------------------------------------------------------')
 
 
 # ---------- SIMULADORE DE SWITCH --------------
 
 def setOption(option, A, B):
-    return {
-        '1': compuerta_NOT(A),
-        '2': compuerta_AND(A,B),
-        '3': compuerta_OR(A,B),
-        '4': compuerta_XOR(A,B),
-        '5': compuerta_NAND(A,B),
-        '6': compuerta_NOR(A,B),
-        '7': compuerta_XNOR(A,B),
-        '8': compuerta_IF(A),
-    }.get(option)
+    if(option == '1'):
+        compuerta_NOT(A)
+    elif(option == '2'):
+        compuerta_AND(A,B),
+    elif(option == '3'):
+        compuerta_OR(A,B),
+    elif(option == '4'):
+        compuerta_XOR(A,B),
+    elif(option == '5'):
+        compuerta_NAND(A,B),
+    elif(option == '6'):
+        compuerta_NOR(A,B),
+    elif(option == '7'):
+        compuerta_XNOR(A,B),
+    elif(option == '8'):
+        compuerta_IF(A),
+
+# Mensaje dinámico
+os.system('cls') 
+print("****************************************") 
+print("*                                      *")
+print("*   ¡Bienvenidos al taller de lógica   *")
+print("*                                      *")
+print("****************************************")
+ 
+time.sleep(2)
+os.system('cls')
 
 # ----------- MENÚ ------------------------
-
-print('***********TALLER #3 LÓGICA MATEMÁTICA************\n')
 A = getA()
 B = getB()
+print('Las variables son: \n'
+        ' A = '+str(A)+'\n'
+        ' B = '+str(B)+'\n')
 
 while True:
-    print('\nLas variables son: \n'
-          ' A = '+str(A)+'\n'
-          ' B = '+str(B)+'\n')
-
-    print('Menú:\n'
+    print('**************** MENÚ ****************\n\n'
+        'Elije la opción que deseas realizar:\n'
           ' 1. Compuerta NOT para la variable A.\n'
           ' 2. Compuerta AND para las variables A y B.\n'
           ' 3. Compuerta OR para las variables A y B.\n'
@@ -90,17 +114,22 @@ while True:
           ' 9. Circuito lógico\n'
           ' 10. Dibujar compuerta (indicar cual en esta opción)\n'
           ' 11. Cambiar variables.\n'
-          ' 12. Limpiar pantalla.\n'
-          ' 13. Salir.\n')
-    option = input('Ingrese la opción del menú que desea ver: ')
+          ' 12. Salir.\n')
 
-    if (option == '13'):
+    option = input('Ingrese la opción del menú que desea ver: ')
+    if (option == '12'):
+        print('¡Gracias por usar nuestro programa!')
         break
-    elif (option =='12'):
-        os.system("cls")
     elif (option == '11'):
+        os.system('cls')
         A = getA()
         B = getB()
+        print('Las variables son: \n'
+          ' A = '+str(A)+'\n'
+          ' B = '+str(B)+'\n')
     else:
         setOption(option, A, B)
+        time.sleep(2)
+
+
 
