@@ -6,7 +6,7 @@ def compuerta_AND(A,B):
     print('--------------------------------------------------------------')
 
 def compuerta_OR(A, B):
-    result = (A | B)
+    result = 1 if (A | B) else 0
     print("\nResultado de la Compuerta OR para A y B es: ",result,'\n')
     print('--------------------------------------------------------------')
 
@@ -41,12 +41,28 @@ def compuerta_IF(A):
     print('--------------------------------------------------------------')
 
 def compuerta_logica(A,B):
-    result = 1 if not(((A & B) & (not B)) & (not B)) | (not A) else 0
+    result = 1 if not((((not (A)) | B) & (not B)) & (not B))else 0 | 1 if(not (A)) else 0 
+    
+    print('\nEl circuito lógico será: [((a`+b)*b`)*b`]`+a`\n')
+    print('Reemplazamos las variables con los datos ingresados\n\n')
+    print('   [((',A,'`+',B,')*',B,'`)*',B,'`]`+',A,'`\n\n')
+    print('Soluciónes parciales: \n')
+    print('= [(',((not A) | B),'*',B,'`)*',B,'`]`+',A,'`\n')
+    print('= [(',((not A) | B),'*',1 if not(B) else 0,')*',1 if not(B) else 0,']`+',1 if not(A) else 0,'\n')
+    print('= [(',((not A) | B) & (not B),')*',1 if not(B) else 0,']`+',1 if not(A) else 0,'\n')
+    print('= [',((((not A) | B) & (not B)) & (not B)),']`+',1 if not(A) else 0,'\n')
+    print('= ', 1 if not((((not A) | B) & (not B)) & (not B)) else 0,'+',1 if not(A) else 0,'\n')
+    print('= ', 1 if not((((not A) | B) & (not B)) & (not B)) else 0 | 1 if (not(A)) else 0,'\n\n')
+    print('TABLA DE VERDAD\n')
+    print('| A | B | [((a` + b) *  b`) *  b`] ` +  a`\n'  
+          '----------------------------------------- \n'
+          '| 0 | 0 |    1  1    1  1   1  1  0 |1| 1 \n'
+          '| 0 | 1 |    1  1    0  0   0  0  1 |1| 1 \n'
+          '| 1 | 0 |    0  0    0  1   0  1  1 |1| 0 \n'
+          '| 1 | 1 |    0  1    0  0   0  0  1 |1| 0 \n'
+          '                                    |_|   \n'
+          )
 
-    print('\nEl circuito lógico será: [((a+b)*b`)*b`]`+a`\n')
-    print('Reemplazamos las variables con los datos inglresados\n\n')
-    print('   [((',A,'+',B,')*',B,'`)*',B,'`]`+',A,'`\n\n')
-    print('lo cual nos da como resultado: ', result)
     print('--------------------------------------------------------------')
 
 def compuerta_draw():
